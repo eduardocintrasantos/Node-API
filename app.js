@@ -4,6 +4,15 @@ const app = express();
 
 app.use(express.json());
 
+app.use((req, res, next) => {
+    console.log('Hello from the middleware..');
+    next();
+});
+
+app.use((req, res, next) => {
+    req.requestTime = new Date().toISOString();
+    next();
+});
 /*  EXEMPLOS
 
 app.get('/', (req, res) => {
@@ -30,6 +39,7 @@ const tours = JSON.parse(fs.readFileSync(`${__dirname}/dev-data/data/tours-simpl
 const getAllTours  = (req, res) => {
     res.status(200)
     .json({
+        requestAt: req.requestTime,
         status: 'Sucesso',
         results: tours.length,
         data: {
@@ -114,22 +124,11 @@ const deleteTour = (req, res) => {
     })
 }
 
-/*
 app.get('/api/v1/tours', getAllTours);
 app.get('/api/v1/tours/:id', getTour);
 app.post('/api/v1/tours', createTour);
 app.patch('/api/v1/tours/:id', updateTour);
 app.delete('/api/v1/tours/:id', deleteTour);
-*/
-
-app.router('/api/v1/tours')
-    .get(getAllTours)
-    .post(createTour);
-
-app.router('/api/v1/tours/:id')
-    .get(getTour)
-    .patch(updateTour)
-    .delete(deleteTour);
 
 const port = 3000;
 app.listen(port, () => {
