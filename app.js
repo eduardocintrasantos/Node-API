@@ -130,6 +130,41 @@ const deleteTour = (req, res) => {
     })
 }
 
+const getAllUsers = (req, res) => {
+    res.status(500).json({
+        status: 'Error',
+        message: 'Rota não definida.'
+    })
+}
+
+const createUser = (req, res) => {
+    res.status(500).json({
+        status: 'Error',
+        message: 'Rota não definida.'
+    })
+}
+
+const getUser = (req, res) => {
+    res.status(500).json({
+        status: 'Error',
+        message: 'Rota não definida.'
+    })
+}
+
+const updateUser = (req, res) => {
+    res.status(500).json({
+        status: 'Error',
+        message: 'Rota não definida.'
+    })
+}
+
+const deleteUser = (req, res) => {
+    res.status(500).json({
+        status: 'Error',
+        message: 'Rota não definida.'
+    })
+}
+
 // 3) ROUTERS
 
 app.get('/api/v1/tours', getAllTours);
@@ -137,6 +172,12 @@ app.get('/api/v1/tours/:id', getTour);
 app.post('/api/v1/tours', createTour);
 app.patch('/api/v1/tours/:id', updateTour);
 app.delete('/api/v1/tours/:id', deleteTour);
+
+app.get('/api/v1/users', getAllUsers);
+app.post('/api/v1/users', createUser);
+app.get('/api/v1/users/:id', getUser);
+app.path('/api/v1/users/:id', updateUser);
+app.delete('/api/v1/users/:id', deleteUser);
 
 // 4) START SERVER
 
