@@ -19,26 +19,6 @@ app.use((req, res, next) => {
     req.requestTime = new Date().toISOString();
     next();
 });
-/*  EXEMPLOS
-
-app.get('/', (req, res) => {
-    res.status(200).send('teste');
-});
-
-app.post('/', (req, res) => {
-    res.status(200)
-    .send('Post...');
-});
-
-app.get('/produtos', (req, res) => {
-    res
-    .status(200)
-    .json({
-        Produto: 'Caneta', 
-        Cor: 'Azul'
-    });
-});
-*/
 
 // 2) ROUTER HANDLERS
 
